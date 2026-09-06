@@ -45,10 +45,19 @@ class Grid:
         result = []
         for dr, dc in deltas:
             npos = (r + dr, c + dc)
-            if self.in_bounds(npos) and not self.is_wall(npos):
-                # custo da diagonal é sqrt(2), do movimento reto é 1
-                cost = 1.414213562 if (dr != 0 and dc != 0) else 1.0
-                result.append((npos, cost))
+            if not self.in_bounds(npos) or self.is_wall(npos):
+                continue
+
+            if dr != 0 and dc != 0:
+                # só passa na diagonal se as duas células ortogonais estiverem
+                # livres, senão o caminho "cortaria o canto" entre obstáculos
+                if self.is_wall((r + dr, c)) or self.is_wall((r, c + dc)):
+                    continue
+                cost = 1.414213562
+            else:
+                cost = 1.0
+
+            result.append((npos, cost))
         return result
 
     @staticmethod
