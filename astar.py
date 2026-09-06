@@ -23,6 +23,15 @@ def euclidean(a, b):
     return ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5
 
 
+def zero(a, b):
+    """
+    Heurística nula. Com h(n) = 0 temos f(n) = g(n), ou seja, o A* passa a
+    expandir sempre o nó de menor custo acumulado: isso é exatamente o
+    algoritmo de Dijkstra. Serve para comparar os dois usando o mesmo código.
+    """
+    return 0.0
+
+
 def astar(grid, start, goal, heuristic=manhattan, allow_diagonal=False):
     """
     Executa o A* no grid, do ponto start até o ponto goal.
