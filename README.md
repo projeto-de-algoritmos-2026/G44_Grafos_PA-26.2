@@ -57,7 +57,7 @@ Framework: matplotlib (apenas para a visualização)<br>
 Pré-requisitos: Python 3 instalado.
 
 ```bash
-pip install matplotlib
+pip install -r requirements.txt
 ```
 
 ## Uso
@@ -86,6 +86,7 @@ Arquivos do projeto:
 | `astar.py` | Implementação do A* (heurísticas Manhattan e Euclidiana) |
 | `visualize.py` | Desenho do grid, caminho e nós explorados |
 | `main.py` | Execução principal |
+| `requirements.txt` | Dependências do projeto |
 
 Complexidade: O(E log V) com fila de prioridade (heap), igual ao Dijkstra;
 a heurística melhora o desempenho prático ao reduzir nós expandidos.

@@ -1,0 +1,7 @@
+# Dependências do projeto.
+# Instalação:  pip install -r requirements.txt
+#
+# Única dependência externa, usada apenas em visualize.py para gerar a
+# imagem do resultado. O grid (grid.py) e o A* (astar.py) usam somente a
+# biblioteca padrão do Python.
+matplotlib>=3.5
