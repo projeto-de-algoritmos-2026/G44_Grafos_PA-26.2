@@ -3,6 +3,7 @@
 Número da Lista: 90<br>
 Conteúdo da Disciplina: Grafos<br>
 Grupo: 44
+Link para vídeo no Youtube : https://youtu.be/cZiEbkVVOTs
 
 ## Alunos
 

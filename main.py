@@ -1,10 +1,3 @@
-"""
-main.py
--------
-Gera um grid 10x10 com obstáculos, roda o A* do ponto de partida até o
-destino, e salva a visualização do resultado.
-"""
-
 from grid import Grid
 from astar import astar, manhattan, zero
 from visualize import draw_grid
@@ -15,7 +8,7 @@ def main():
     start = (0, 0)
     goal = (9, 9)
 
-    # grid aleatório com ~25% de obstáculos (sem seed = labirinto diferente a cada execução)
+    # sem seed: labirinto diferente a cada execução
     grid = Grid.random_grid(rows, cols, obstacle_ratio=0.25,
                              start=start, goal=goal)
 
@@ -32,9 +25,7 @@ def main():
         print(f"Nós explorados pelo A*: {result['visited_count']} de {rows * cols} células totais")
         print(f"\nCaminho: {result['path']}")
 
-        # Mesmo grid, mesmo código, só trocando a heurística por h(n) = 0:
-        # sem heurística o A* vira Dijkstra e a busca se espalha em todas as
-        # direções em vez de ser puxada na direção do destino.
+        # mesmo grid e mesmo código, só com h(n) = 0
         dijkstra = astar(grid, start, goal, heuristic=zero, allow_diagonal=False)
 
         print("\n" + "-" * 60)

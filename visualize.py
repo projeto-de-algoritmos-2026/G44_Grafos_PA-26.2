@@ -1,10 +1,3 @@
-"""
-visualize.py
-------------
-Desenha o grid, os obstáculos, os nós explorados pelo A* e o caminho
-final encontrado.
-"""
-
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
@@ -12,7 +5,6 @@ import matplotlib.patches as patches
 def draw_grid(grid, start, goal, result, filename="astar_result.png"):
     fig, ax = plt.subplots(figsize=(8, 8))
 
-    # desenha cada célula
     for r in range(grid.rows):
         for c in range(grid.cols):
             color = "#2b2d42" if grid.is_wall((r, c)) else "#f1f3f5"
@@ -20,7 +12,7 @@ def draw_grid(grid, start, goal, result, filename="astar_result.png"):
                                       facecolor=color, edgecolor="#ced4da", linewidth=0.5)
             ax.add_patch(rect)
 
-    # nós explorados (visitados pelo A*, mas que não são o caminho final)
+    # nós explorados que não fazem parte do caminho final
     path_set = set(result["path"]) if result["path"] else set()
     for (r, c) in result["visited_order"]:
         if (r, c) not in path_set:
@@ -28,14 +20,13 @@ def draw_grid(grid, start, goal, result, filename="astar_result.png"):
                                       facecolor="#a5d8ff", edgecolor="#ced4da", linewidth=0.5)
             ax.add_patch(rect)
 
-    # caminho final
     if result["path"]:
         for (r, c) in result["path"]:
             rect = patches.Rectangle((c, grid.rows - 1 - r), 1, 1,
                                       facecolor="#51cf66", edgecolor="#ced4da", linewidth=0.5)
             ax.add_patch(rect)
 
-    # start e goal por cima de tudo
+    # start e goal ficam por cima
     sr, sc = start
     gr, gc = goal
     ax.add_patch(patches.Rectangle((sc, grid.rows - 1 - sr), 1, 1,
